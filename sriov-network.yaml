@@ -1,0 +1,13 @@
+apiVersion: sriovnetwork.openshift.io/v1
+kind: SriovNetwork
+metadata:
+  name: sriovnetwork
+  namespace: openshift-sriov-network-operator
+spec:
+  ipam: '{  "type": "host-local",  "subnet": "192.168.10.0/24",  "rangeStart": "192.168.10.171",  "rangeEnd":
+    "192.168.10.181",  "routes": [{    "dst": "0.0.0.0/0"  }],  "gateway": "192.168.10.1"}'
+  linkState: enable
+  networkNamespace: sriov-app
+  resourceName: netdevice
+  spoofChk: "on"
+  trust: "off"

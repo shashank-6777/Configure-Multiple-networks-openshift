@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: support-app-2
+  labels:
+    app: support-app-2
+  namespace: macvlan-app
+  annotations:
+    k8s.v1.cni.cncf.io/networks: "macvlan-conf-2"
+spec:
+ containers:
+   - name: support-app-1
+     image: 'registry.necdtvran.localdomain:5000/nec-nfvi/nfvi-ocp/4.12/support-tools'
+     imagePullPolicy: Never
+     ports:
+       - containerPort: 8080
+     command: ["sleep", "30d"]
+     nodeSelector:
+        kubernetes.io/hostname: worker03.dtcl1.necdtvran.localdomain
+
